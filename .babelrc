@@ -1,0 +1,19 @@
+{
+    "presets": ["react-native"],
+    "plugins": [
+        "jest-hoist",
+        [
+            "extensible-destructuring",
+            {
+                "mode": "optin", // optout would be nice, but will not work w/ react-native.: https://github.com/vacuumlabs/babel-plugin-extensible-destructuring/issues/16
+                "impl": "immutable",
+            }
+        ]
+    ],
+    "env": {
+        "production": {
+            "plugins": ["transform-remove-console"]
+        }
+    }
+}
+

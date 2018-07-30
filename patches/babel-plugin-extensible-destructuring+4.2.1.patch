@@ -1,0 +1,21 @@
+patch-package
+--- a/node_modules/babel-plugin-extensible-destructuring/lib/index.js
++++ b/node_modules/babel-plugin-extensible-destructuring/lib/index.js
+@@ -176,7 +176,7 @@ exports.default = function (_ref) {
+           if (i >= spreadPropIndex) break;
+ 
+           // ignore other spread properties
+-          if (t.isRestProperty(prop)) continue;
++          if (t.isRestElement(prop)) continue;
+ 
+           var key = prop.key;
+           if (t.isIdentifier(key) && !prop.computed) key = t.stringLiteral(prop.key.name);
+@@ -234,7 +234,7 @@ exports.default = function (_ref) {
+ 
+         for (var i = 0; i < pattern.properties.length; i++) {
+           var prop = pattern.properties[i];
+-          if (t.isRestProperty(prop)) {
++          if (t.isRestElement(prop)) {
+             this.pushObjectRest(pattern, objRef, prop, i);
+           } else {
+             this.pushObjectProperty(prop, objRef);
