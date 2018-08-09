@@ -1,4 +1,28 @@
 patch-package
+--- a/node_modules/react-native/jest/hasteImpl.js
++++ b/node_modules/react-native/jest/hasteImpl.js
+@@ -18,9 +18,9 @@ const ROOTS = [
+ ];
+ 
+ const BLACKLISTED_PATTERNS /*: Array<RegExp> */ = [
+-  /.*\/__(mocks|tests)__\/.*/,
+-  /^Libraries\/Animated\/src\/polyfills\/.*/,
+-  /^Libraries\/Renderer\/fb\/.*/,
++  /.*[\\\/]__(mocks|tests)__[\\\/].*/,
++  /^Libraries[\\\/]Animated[\\\/]src[\\\/]polyfills[\\\/].*/,
++  /^Libraries[\\\/]Renderer[\\\/]fb[\\\/].*/,
+ ];
+ 
+ const WHITELISTED_PREFIXES /*: Array<string> */ = [
+@@ -32,7 +32,7 @@ const WHITELISTED_PREFIXES /*: Array<string> */ = [
+ 
+ const NAME_REDUCERS /*: Array<[RegExp, string]> */ = [
+   // extract basename
+-  [/^(?:.*\/)?([a-zA-Z0-9$_.-]+)$/, '$1'],
++  [/^(?:.*[\\\/])?([a-zA-Z0-9$_.-]+)$/, '$1'],
+   // strip .js/.js.flow suffix
+   [/^(.*)\.js(\.flow)?$/, '$1'],
+   // strip .android/.ios/.native/.web suffix
 --- a/node_modules/react-native/local-cli/bundle/assetPathUtils.js
 +++ b/node_modules/react-native/local-cli/bundle/assetPathUtils.js
 @@ -19,17 +19,17 @@ import type {PackagerAsset} from '../../Libraries/Image/AssetRegistry';
